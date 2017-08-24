@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Developed By: Catalog IT Solutions. Copyright © 2017. Catalog. All Rights Reserved.This product is protected by copyright
+    laws. Unauthorized reproduction or distribution of this product,or any portion of it,may result in severe civil and
+    criminal penalties, and will be prosecuted to the maximum extent possible under the law.
+    File Name: AppConfig.java
+    Created By: Sireesha A
+    Created On: 01/Apr/2017
+    Last Modified By: Sireesha A
+    Last Modified On: 24/Apr/2017
+    Purpose:
+    -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <!--<solid android:color="#55FFFFFF"/>-->
+            <solid android:color="#F5F5F5"/>
+            <stroke
+                android:color="@color/colorPrimaryDark"
+                android:width="2dp"></stroke>
+
+        </shape>
+    </item>
+</selector>

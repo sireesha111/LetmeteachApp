@@ -1,0 +1,170 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Filter your Search"
+                android:textSize="16dp"
+                android:textColor="@color/primaryText"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sp_round"
+                    android:padding="5dp"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/arrow4"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/txt_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sp_round"
+                    android:padding="5dp"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/arrow4"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/txt_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sp_round"
+                    android:padding="5dp"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/arrow4"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/txt_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp" />
+
+            <FrameLayout
+                android:id="@+id/frame_zone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sp_zone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sp_round"
+                    android:padding="5dp"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/arrow4"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/txt_zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/button_background"
+                android:text="Search"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+
+                />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

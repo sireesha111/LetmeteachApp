@@ -1,0 +1,170 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipChildren="true"
+    android:clipToPadding="true">
+
+    <com.dev.sacot41.scviewpager.SCViewPager
+        android:id="@+id/viewpager_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.dev.sacot41.scviewpager.SCViewPager>
+
+    <com.dev.sacot41.scviewpager.DotsView
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/dotsview_main"
+        />
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_name_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/school_tree"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_currently_work"
+        android:layout_below="@+id/imageview_main_activity_name_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/graduate_school"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_at_skex"
+        android:layout_below="@+id/imageview_main_activity_currently_work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:src="@drawable/backtoschool"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_commonly"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/timeforschool"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_django_python"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageview_main_activity_mobile"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/pts"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/psp_circle"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/learning"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_diploma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview_main_activity_but"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/diploma"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_activity_why"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/why"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_future"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/future"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_arduino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview_main_future"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/apple"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_raspberry_pi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview_main_arduino"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/raspberry_pi_logo"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_connected_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/connect_device"/>
+
+    <ImageView
+        android:id="@+id/imageview_main_check_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/check_out"/>
+
+    <TextView
+        android:id="@+id/textview_main_github_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/theme_700"
+        android:gravity="left"
+        android:autoLink="web"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:text="https://www.example.com"
+        android:layout_below="@+id/imageview_main_activity_but"
+        android:layout_alignLeft="@+id/imageview_main_arduino"
+        android:layout_alignStart="@+id/imageview_main_arduino" />
+
+    <TextView
+        android:id="@+id/textview_main_linkedin_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/theme_700"
+        android:autoLink="web"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:text="https://ca.linkedin.com/pub/example"
+        android:layout_below="@+id/imageview_main_activity_name_tag"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp" />
+
+
+</RelativeLayout>
