@@ -125,7 +125,7 @@ public class SelectActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this).setTitle("Sample")
+        new AlertDialog.Builder(this).setTitle("Let Me Teach")
                 .setMessage("Are you sure you want to close this app?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
