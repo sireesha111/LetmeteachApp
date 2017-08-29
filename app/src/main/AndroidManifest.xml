@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="catalogitsolutions.letmetutorapp">
+    package="varnalabs.letmetutorapp">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,85 +8,85 @@
 
 
     <application
-        android:name=".app.AppController"
+        android:name="varnalabs.letmetutorapp.app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.Splashscreen">
+        <activity android:name="varnalabs.letmetutorapp.activity.Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.SelectActivity"
+            android:name="varnalabs.letmetutorapp.activity.SelectActivity"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".activity.TeacherLoginActivity"
+            android:name="varnalabs.letmetutorapp.activity.TeacherLoginActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".activity.StudentLoginActivity"
+            android:name="varnalabs.letmetutorapp.activity.StudentLoginActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".activity.TeacherActivity"
+            android:name="varnalabs.letmetutorapp.activity.TeacherActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
 
         <activity
-            android:name=".activity.StudentActivity"
+            android:name="varnalabs.letmetutorapp.activity.StudentActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.TeacherActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.TeacherActivity" >
         </activity>
 
         <activity
-            android:name=".activity.StudentRegisterActivity"
+            android:name="varnalabs.letmetutorapp.activity.StudentRegisterActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.TeacherLoginActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.TeacherLoginActivity" >
         </activity>
         <activity
-            android:name=".activity.TeacherRegisterActivity"
+            android:name="varnalabs.letmetutorapp.activity.TeacherRegisterActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.TeacherLoginActivity" >
-        </activity>
-
-        <activity
-            android:name=".activity.SearchTeacherActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".activity.TeacherActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.TeacherLoginActivity" >
         </activity>
 
         <activity
-            android:name=".activity.TeacherDetailsActivity"
+            android:name="varnalabs.letmetutorapp.activity.SearchTeacherActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.TeacherActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.TeacherActivity" >
         </activity>
 
         <activity
-            android:name=".activity.SendMailActivity"
+            android:name="varnalabs.letmetutorapp.activity.TeacherDetailsActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.TeacherActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.TeacherActivity" >
         </activity>
 
         <activity
-            android:name=".activity.SearchStudentActivity"
+            android:name="varnalabs.letmetutorapp.activity.SendMailActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.StudentActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.TeacherActivity" >
         </activity>
 
         <activity
-            android:name=".activity.StudentDetailsActivity"
+            android:name="varnalabs.letmetutorapp.activity.SearchStudentActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activity.StudentActivity" >
+            android:parentActivityName="varnalabs.letmetutorapp.activity.StudentActivity" >
+        </activity>
+
+        <activity
+            android:name="varnalabs.letmetutorapp.activity.StudentDetailsActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="varnalabs.letmetutorapp.activity.StudentActivity" >
         </activity>
 
     </application>
