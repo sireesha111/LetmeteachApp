@@ -40,5 +40,5 @@ public class AppConfig {
     public static final String STUDENTSUSER_SHARED_PREF = "admin_stu";
 
     public static final String EMAIL = "sireesha.achugatla@gmail.com";
-    public static final String PASSWORD = "sireesha";
+    public static final String PASSWORD = "honeybaby";
 }

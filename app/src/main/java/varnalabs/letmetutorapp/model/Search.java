@@ -2,7 +2,7 @@
 
 package varnalabs.letmetutorapp.model;
 
-public class SearchStudent {
+public class Search {
     public String getSt_id() {
         return st_id;
     }

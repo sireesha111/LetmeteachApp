@@ -32,7 +32,7 @@ import varnalabs.letmetutorapp.R;
 import varnalabs.letmetutorapp.adapter.SearchStudentListAdapter;
 import varnalabs.letmetutorapp.app.AppConfig;
 import varnalabs.letmetutorapp.app.AppController;
-import varnalabs.letmetutorapp.model.SearchStudent;
+import varnalabs.letmetutorapp.model.Search;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class SearchStudentActivity extends AppCompatActivity {
@@ -41,7 +41,7 @@ public class SearchStudentActivity extends AppCompatActivity {
 
     private ListView listView;
     private SearchStudentListAdapter searchStudentListAdapter;
-    private List<SearchStudent> birthdaysList = new ArrayList<SearchStudent>();
+    private List<Search> birthdaysList = new ArrayList<Search>();
     LinearLayout emptyElement;
     ProgressDialog PD;
     private static final String TAG = SearchStudentActivity.class.getSimpleName();
@@ -165,7 +165,7 @@ public class SearchStudentActivity extends AppCompatActivity {
 
                             JSONObject obj = ja.getJSONObject(i);
 
-                            SearchStudent birhtdays = new SearchStudent();
+                            Search birhtdays = new Search();
                             birhtdays.setSt_id(obj.getString("st_id"));
                             birhtdays.setSt_name(obj.getString("st_name"));
                             birhtdays.setSt_photo(obj.getString("st_photo"));

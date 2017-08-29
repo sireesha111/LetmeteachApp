@@ -21,15 +21,15 @@ import java.util.regex.Pattern;
 import varnalabs.letmetutorapp.R;
 import varnalabs.letmetutorapp.app.AppConfig;
 import varnalabs.letmetutorapp.app.AppController;
-import varnalabs.letmetutorapp.model.SearchStudent;
+import varnalabs.letmetutorapp.model.Search;
 
 public class SearchTeacherListAdapter extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
-    private List<SearchStudent> birthdayItems;
+    private List<Search> birthdayItems;
 
-    public SearchTeacherListAdapter(Activity activity, List<SearchStudent> birthdayItems) {
+    public SearchTeacherListAdapter(Activity activity, List<Search> birthdayItems) {
 
         this.activity = activity;
         this.birthdayItems = birthdayItems;
@@ -77,7 +77,7 @@ public class SearchTeacherListAdapter extends BaseAdapter {
         txtCode.setTypeface(font);
         txtDob.setTypeface(font);
 
-        SearchStudent searchStudent = birthdayItems.get(position);
+        Search searchStudent = birthdayItems.get(position);
 
         String pht = searchStudent.getSt_photo();
         pht = pht.replaceAll(" ", "%20");
