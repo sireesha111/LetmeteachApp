@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/nav_header_container"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtmessage"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:text="Customer Support Number : "/>
+    <TextView
+        android:id="@+id/txtnumber1"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textStyle="normal"
+        android:layout_gravity="center|left"
+        android:gravity="center"
+        android:drawablePadding="3dp"
+        android:drawableLeft="@drawable/ic_phone"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:text="9999999999"/>
+    <TextView
+        android:id="@+id/txtnumber2"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_gravity="center|left"
+        android:gravity="center"
+        android:drawablePadding="3dp"
+        android:drawableLeft="@drawable/ic_phone"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:text="7999999999"/>
+
+
+</LinearLayout>
+
+

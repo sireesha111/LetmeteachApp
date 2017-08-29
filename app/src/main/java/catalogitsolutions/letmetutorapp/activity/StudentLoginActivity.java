@@ -56,6 +56,8 @@ public class StudentLoginActivity extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
     Typeface font_text;
 
+    TextView txtHeading;
+
     private boolean loggedIn = false;
 
     SessionManager manager;
@@ -101,8 +103,14 @@ public class StudentLoginActivity extends AppCompatActivity {
             ed_username = (EditText) findViewById(R.id.ed_username);
             ed_password = (EditText) findViewById(R.id.ed_password);
             btnLogin = (Button) findViewById(R.id.btnLogin);
+            txtHeading = (TextView) findViewById(R.id.txtHeading);
+            txtHeading.setText("Let Me Teach - Student");
+            txtHeading.setTypeface(font_text, Typeface.BOLD);
+
 
             txtSignup = (TextView) findViewById(R.id.txtSignup);
+
+            txtSignup.setTypeface(font_text, Typeface.BOLD);
 
             coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                     .coordinatorLayout);

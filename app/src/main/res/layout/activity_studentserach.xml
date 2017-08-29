@@ -37,11 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:background="#E0E0E0"
         android:orientation="vertical">
 
             <ListView
+
                 android:id="@+id/list"
                 android:divider="@color/list_divider"
                 android:dividerHeight="1dp"
@@ -50,20 +50,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt2"
                 android:layout_marginBottom="10dp"
-                android:visibility="visible"
                 android:layout_marginTop="10dp" />
 
             <LinearLayout
                 android:id="@+id/emptyElement"
                 android:layout_width="match_parent"
-                android:layout_height="475dp"
+                android:layout_height="match_parent"
                 android:background="@android:color/white"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="70dp"
                 android:gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_below="@+id/linearLayout">
 
                 <TextView

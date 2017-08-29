@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="catalogitsolutions.letmetutorapp">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -59,9 +60,33 @@
         </activity>
 
         <activity
-            android:name=".activity.TeacherSearchActivity"
+            android:name=".activity.SearchTeacherActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".activity.TeacherActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.TeacherDetailsActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.TeacherActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.SendMailActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.TeacherActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.SearchStudentActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.StudentActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.StudentDetailsActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.StudentActivity" >
         </activity>
 
     </application>

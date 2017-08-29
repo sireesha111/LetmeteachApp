@@ -23,13 +23,13 @@ import catalogitsolutions.letmetutorapp.app.AppConfig;
 import catalogitsolutions.letmetutorapp.app.AppController;
 import catalogitsolutions.letmetutorapp.model.SearchStudent;
 
-public class SearchStudentListAdapter extends BaseAdapter {
+public class SearchTeacherListAdapter extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
     private List<SearchStudent> birthdayItems;
 
-    public SearchStudentListAdapter(Activity activity, List<SearchStudent> birthdayItems) {
+    public SearchTeacherListAdapter(Activity activity, List<SearchStudent> birthdayItems) {
 
         this.activity = activity;
         this.birthdayItems = birthdayItems;
@@ -94,7 +94,7 @@ public class SearchStudentListAdapter extends BaseAdapter {
         txtid.setText(searchStudent.getSt_id());
 
         txtName.setText(String.valueOf(strname));
-        txtCode.setText("Student Code : "+String.valueOf(searchStudent.getSt_code()));
+        txtCode.setText("Tutor Code : "+String.valueOf(searchStudent.getSt_code()));
         txtDob.setText("Sex / Age : "+String.valueOf(searchStudent.getSt_gander()+" "+searchStudent.getSt_age()));
 
         return convertView;

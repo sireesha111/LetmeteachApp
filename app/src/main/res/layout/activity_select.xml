@@ -29,6 +29,7 @@
                 android:src="@drawable/ic_student" />
 
             <TextView
+                android:id="@+id/txtstu"
                 android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,11 +55,12 @@
                 android:src="@drawable/ic_teacher" />
 
             <TextView
+                android:id="@+id/txttutor"
                 android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
-                android:text="Teacher"
+                android:text="Tutor"
                 android:textSize="16dp" />
         </LinearLayout>
 

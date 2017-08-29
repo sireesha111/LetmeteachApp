@@ -16,8 +16,7 @@ public class AppConfig {
 
     //Base url
     public static String BASE_URL = "http://192.168.2.30/sample_android_api/";
-
-    //public static String PROFILEIMG_URL = "http://192.168.2.105/sample_android_api/";
+    public static String IMAGES = "http://192.168.2.30/sample_android_api/";
 
     public static final String STUDENT_LOGIN_URL = BASE_URL + "student_login.php";
     public static final String TEACHER_LOGIN_URL = BASE_URL + "teacher_login.php";
@@ -38,6 +37,10 @@ public class AppConfig {
     public static final String CHECKTEACHERDETAIL_URL = BASE_URL + "checkteacherdetails.php";
     public static final String CHECKSTUDENTSDETAIL_URL = BASE_URL + "checkstudentdetails.php";
     public static final String SEARCHTEACHER_URL = BASE_URL + "searchteacher_list.php";
+    public static final String SEARCHSTUDENT_URL = BASE_URL + "searchstudent_list.php";
+
+    public static final String TEACHERDETAILS_URL = BASE_URL + "getTeacherDetails.php";
+    public static final String STUDENTDETAILS_URL = BASE_URL + "getStudentDetails.php";
 
     public static final String LOGIN_SUCCESS = "success";
     public static final String LOGGEDIN_SHARED_PREF = "loggedin";
@@ -46,4 +49,7 @@ public class AppConfig {
 
     public static final String SHARED_STUDENTS_PREF_NAME = "stuloginapp";
     public static final String STUDENTSUSER_SHARED_PREF = "admin_stu";
+
+    public static final String EMAIL = "admin@catalogsolutions.in";
+    public static final String PASSWORD = "citsadmin123";
 }

@@ -6,13 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,13 +29,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.androidbuts.multispinnerfilter.KeyPairBoolData;
-import com.dev.sacot41.scviewpager.DotsView;
-import com.dev.sacot41.scviewpager.SCPositionAnimation;
-import com.dev.sacot41.scviewpager.SCViewAnimation;
-import com.dev.sacot41.scviewpager.SCViewAnimationUtil;
-import com.dev.sacot41.scviewpager.SCViewPager;
-import com.dev.sacot41.scviewpager.SCViewPagerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,24 +39,23 @@ import java.util.List;
 
 import catalogitsolutions.letmetutorapp.R;
 import catalogitsolutions.letmetutorapp.activity.StudentActivity;
-import catalogitsolutions.letmetutorapp.activity.TeacherActivity;
-import catalogitsolutions.letmetutorapp.activity.TeacherSearchActivity;
+import catalogitsolutions.letmetutorapp.activity.SearchTeacherActivity;
 import catalogitsolutions.letmetutorapp.app.AppConfig;
 import me.drakeet.materialdialog.MaterialDialog;
 
 
-public class TeacherSearchFragment extends Fragment implements StudentActivity.OnBackPressedListener {
+public class SearchTeacherFragment extends Fragment implements StudentActivity.OnBackPressedListener {
 
     Activity context;
     View view;
-    private static final String TAG = TeacherSearchFragment.class.getSimpleName();
+    private static final String TAG = SearchTeacherFragment.class.getSimpleName();
 
     Button btnSearch;
 
     Typeface font_text;
 
-    Spinner sp_subject, sp_class, sp_city, sp_zone;
-    TextView txt_subject, txt_class, txt_city, txt_zone;
+    Spinner sp_subject, sp_class, sp_city, sp_zone, sp_quali;
+    TextView txt_subject, txt_class, txt_city, txt_zone, heading, txt_quali;
 
     private JSONArray subject_result;
     ArrayList<String> subjectlist;
@@ -73,6 +64,10 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
     private JSONArray class_result;
     ArrayList<String> classeslist;
     private RequiredSpinnerAdapter class_adapter;
+
+    private JSONArray quali_result;
+    ArrayList<String> qualilist;
+    private RequiredSpinnerAdapter quali_adapter;
 
     private JSONArray city_result;
     ArrayList<String> citylist;
@@ -92,32 +87,11 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
     }
 
     public void doBack() {
-        final MaterialDialog mMaterialDialog = new MaterialDialog(context);
-        mMaterialDialog.setTitle("Let Me Teach")
-                .setMessage("Are you sure to close the App?")
-                .setPositiveButton(
-                        "OK", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mMaterialDialog.dismiss();
-                                Intent intent = new Intent(Intent.ACTION_MAIN);
-                                intent.addCategory(Intent.CATEGORY_HOME);
-                                startActivity(intent);
-                                context.finish();
-                                System.exit(0);
-                            }
-                        }
-                )
-                .setNegativeButton(
-                        "CANCEL", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mMaterialDialog.dismiss();
-
-                            }
-                        }
-                )
-                .show();
+        StudentDashboardFragment fragment = new StudentDashboardFragment();
+        FragmentTransaction fragmentTransaction =
+                getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -159,13 +133,19 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
             sp_class = (Spinner) view.findViewById(R.id.sp_class);
             sp_city = (Spinner) view.findViewById(R.id.sp_city);
             sp_zone = (Spinner) view.findViewById(R.id.sp_zone);
+            sp_quali = (Spinner) view.findViewById(R.id.sp_quali);
 
             btnSearch = (Button) view.findViewById(R.id.btnSearch);
+            btnSearch.setTypeface(font_text, Typeface.BOLD);
+
+            heading = (TextView) view.findViewById(R.id.heading);
+            heading.setTypeface(font_text, Typeface.BOLD);
 
             txt_subject = (TextView) view.findViewById(R.id.txt_subject);
             txt_class = (TextView) view.findViewById(R.id.txt_class);
             txt_city = (TextView) view.findViewById(R.id.txt_city);
             txt_zone = (TextView) view.findViewById(R.id.txt_zone);
+            txt_quali = (TextView) view.findViewById(R.id.txt_quali);
 
             frame_zone = (FrameLayout) view.findViewById(R.id.frame_zone);
 
@@ -173,10 +153,12 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
             subjectlist = new ArrayList<String>();
             citylist = new ArrayList<String>();
             zoneslist = new ArrayList<String>();
+            qualilist = new ArrayList<String>();
 
             getSpClassData();
             getSpSubjectData();
             getSpCityData();
+            getSpQualiData();
 
             sp_subject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -232,6 +214,39 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
 
                     } else {
                        txt_class.setText(sp_class.getSelectedItem().toString());
+
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            sp_quali.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                    parent.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sp_quali.requestFocusFromTouch();
+                        }
+                    });
+
+                    if (sp_quali.getSelectedItem() == "Select Qualification") {
+
+                        parent.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                sp_quali.requestFocusFromTouch();
+                            }
+                        });
+
+                    } else {
+
+                        txt_quali.setText(sp_quali.getSelectedItem().toString());
 
 
                     }
@@ -315,18 +330,21 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
                     String strsubject = txt_subject.getText().toString();
                     String strcity = txt_city.getText().toString();
                     String strzone = txt_zone.getText().toString();
+                    String strquali = txt_quali.getText().toString();
 
                     Log.d(TAG, "Class:"+strclass);
                     Log.d(TAG, "Subject:"+strsubject);
                     Log.d(TAG, "City:"+strcity);
                     Log.d(TAG, "Zone:"+strzone);
+                    Log.d(TAG, "Quali:"+strquali);
 
                     if(!strclass.isEmpty() && !strsubject.isEmpty() && !strcity.isEmpty() && !strzone.isEmpty()){
-                        Intent intent = new Intent(getActivity(), TeacherSearchActivity.class);
+                        Intent intent = new Intent(getActivity(), SearchTeacherActivity.class);
                         intent.putExtra("strclass", strclass);
                         intent.putExtra("strsubject", strsubject);
                         intent.putExtra("strcity", strcity);
                         intent.putExtra("strzone", strzone);
+                        intent.putExtra("strquali", strquali);
                         startActivity(intent);
                     }else{
                         Toast.makeText(context, "Please all the fill", Toast.LENGTH_SHORT).show();
@@ -338,6 +356,88 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
 
         }
         return view;
+    }
+
+    public void getSpQualiData() {
+
+        String url_class = AppConfig.SELECT_QUALI_URL;
+        Log.d(TAG, url_class);
+
+        StringRequest stringRequest = new StringRequest(url_class,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject j = new JSONObject(response);
+                            int success = j.getInt("success");
+
+                            if (success == 1) {
+
+                               quali_result = j.getJSONArray("qualilist");
+
+                                getQualiName(quali_result);
+                            } else if (success == 0) {
+                                Toast.makeText(context, "No Records Found", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException jsonexception) {
+                            jsonexception.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    private void getQualiName(JSONArray j) {
+
+        for (int i = 0; i < j.length(); i++) {
+            try {
+                JSONObject json = j.getJSONObject(i);
+                qualilist.add(json.getString("quali_name"));
+            } catch (JSONException jsonexception) {
+                jsonexception.printStackTrace();
+            }
+        }
+
+        quali_adapter = new RequiredSpinnerAdapter(context, R.layout.custom_textview_to_spinner, qualilist) {
+
+
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view1 = super.getView(position, convertView, parent);
+
+                Typeface faceGautami = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fontRegular.ttf");
+
+                ((TextView) view1).setTypeface(faceGautami);
+
+                return view1;
+            }
+
+
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view2 = super.getDropDownView(position, convertView, parent);
+
+                Typeface faceGautami = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fontRegular.ttf");
+                ((TextView) view2).setTypeface(faceGautami);
+
+                return view2;
+            }
+
+        };
+
+        quali_adapter.add("Select Qualification");
+        sp_quali.setAdapter(quali_adapter);
+        sp_quali.setSelection(quali_adapter.getCount());
+
     }
 
     public void getSpClassData() {
@@ -356,7 +456,7 @@ public class TeacherSearchFragment extends Fragment implements StudentActivity.O
 
                             if (success == 1) {
 
-                               class_result = j.getJSONArray("classlist");
+                                class_result = j.getJSONArray("classlist");
 
                                 getClassName(class_result);
                             } else if (success == 0) {

@@ -3,7 +3,15 @@
 package catalogitsolutions.letmetutorapp.model;
 
 public class SearchStudent {
+    public String getSt_id() {
+        return st_id;
+    }
 
+    public void setSt_id(String st_id) {
+        this.st_id = st_id;
+    }
+
+    String st_id;
     String st_code;
     String st_photo;
     String st_name;

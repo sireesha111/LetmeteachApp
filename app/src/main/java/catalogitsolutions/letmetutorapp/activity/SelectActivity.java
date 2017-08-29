@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import catalogitsolutions.letmetutorapp.R;
 import me.drakeet.materialdialog.MaterialDialog;
@@ -19,6 +20,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 public class SelectActivity extends AppCompatActivity {
 
     LinearLayout layout_student, layout_teacher;
+    TextView txtstu, txttutor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,13 @@ public class SelectActivity extends AppCompatActivity {
         } else {
 
             layout_student = (LinearLayout) findViewById(R.id.layout_student);
+
+            txttutor = (TextView) findViewById(R.id.txttutor);
+            txtstu = (TextView) findViewById(R.id.txtstu);
+
+            txttutor.setTypeface(font, Typeface.BOLD);
+            txtstu.setTypeface(font, Typeface.BOLD);
+
             layout_teacher = (LinearLayout) findViewById(R.id.layout_teacher);
 
             layout_student.setOnClickListener(new View.OnClickListener() {

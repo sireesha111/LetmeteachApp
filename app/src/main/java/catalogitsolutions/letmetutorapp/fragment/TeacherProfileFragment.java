@@ -234,7 +234,7 @@ public class TeacherProfileFragment extends Fragment implements TeacherActivity.
                     //Loading image from below url into imageView
                     Picasso.with(getActivity()).load(AppConfig.BASE_URL + t_photo).resize(200, 200).into(thumbNail);
 
-                    Spanned tcode = Html.fromHtml("<b>Teacher Code &nbsp;: </b>  " + t_code);
+                    Spanned tcode = Html.fromHtml("<b>Tutor Code &nbsp;: </b>  " + t_code);
                     txt_tcode.setText(tcode);
                     txt_tcode.setTypeface(font_text);
 

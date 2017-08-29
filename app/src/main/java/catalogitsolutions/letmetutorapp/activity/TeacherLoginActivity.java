@@ -51,7 +51,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
     Button btnLogin;
 
-    TextView txtSignup;
+    TextView txtSignup, txtHeading;
 
     private CoordinatorLayout coordinatorLayout;
     Typeface font_text;
@@ -103,6 +103,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
             btnLogin = (Button) findViewById(R.id.btnLogin);
 
             txtSignup = (TextView) findViewById(R.id.txtSignup);
+            txtSignup.setTypeface(font_text, Typeface.BOLD);
 
             coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                     .coordinatorLayout);
@@ -111,14 +112,10 @@ public class TeacherLoginActivity extends AppCompatActivity {
             ed_password.setTypeface(font_text);
             btnLogin.setTypeface(font_text);
 
+            txtHeading = (TextView) findViewById(R.id.txtHeading);
+            txtHeading.setText("Let Me Teach - Tutor");
+            txtHeading.setTypeface(font_text, Typeface.BOLD);
 
-
-            //Intent i = getIntent();
-            //teaching = i.getStringExtra("teach");
-
-            //Toast.makeText(this, "teach="+teaching, Toast.LENGTH_SHORT).show();
-
-            //Log.d(TAG, "teach = "+teaching);
 
             Context ctx = getApplicationContext();
             //String strSavedValue = null;
@@ -126,7 +123,6 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
             teaching = sharedPreferences.getString("teach", null);
 
-            Toast.makeText(this, "teach="+teaching, Toast.LENGTH_SHORT).show();
 
             Log.d(TAG, "teach = "+teaching);
 

@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -23,14 +24,20 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import catalogitsolutions.letmetutorapp.R;
 import catalogitsolutions.letmetutorapp.app.AppConfig;
 import catalogitsolutions.letmetutorapp.app.AppController;
+import catalogitsolutions.letmetutorapp.fragment.CustomerSupportFragment;
+import catalogitsolutions.letmetutorapp.fragment.CustomerSupportsFragment;
+import catalogitsolutions.letmetutorapp.fragment.SearchStudentFragment;
 import catalogitsolutions.letmetutorapp.fragment.TeacherDashboardFragment;
 import catalogitsolutions.letmetutorapp.fragment.TeacherProfileFragment;
-import catalogitsolutions.letmetutorapp.fragment.TeacherSearchFragment;
+import catalogitsolutions.letmetutorapp.fragment.SearchTeacherFragment;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class TeacherActivity extends AppCompatActivity
@@ -83,7 +90,7 @@ public class TeacherActivity extends AppCompatActivity
                     "fontRegular.ttf");
 
             TextView idLogo = (TextView) toolbar.findViewById(R.id.idLogo);
-            idLogo.setText("Sample - Teacher");
+            idLogo.setText("Let Me Teach - Tutor");
             idLogo.setTypeface(font_text);
 
             drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -127,10 +134,22 @@ public class TeacherActivity extends AppCompatActivity
             String username = sharedPreferences.getString(AppConfig.TEACHERUSER_SHARED_PREF, "Not Available");
 
 
-            txtUsername.setText(username);
+            txtUsername.setText("Let Me Teach");
+            logoid.setText(capitalize(username));
             logoid.setTypeface(font_text);
+            txtUsername.setTypeface(font_text, Typeface.BOLD);
         }
 
+    }
+
+    private String capitalize(String capString){
+        StringBuffer capBuffer = new StringBuffer();
+        Matcher capMatcher = Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(capString);
+        while (capMatcher.find()){
+            capMatcher.appendReplacement(capBuffer, capMatcher.group(1).toUpperCase() + capMatcher.group(2).toLowerCase());
+        }
+
+        return capMatcher.appendTail(capBuffer).toString();
     }
 
     @Override
@@ -177,7 +196,7 @@ public class TeacherActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (navitem_id == R.id.item_navigation_drawer_search) {
-            TeacherSearchFragment fragment = new TeacherSearchFragment();
+            SearchStudentFragment fragment = new SearchStudentFragment();
             FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -185,11 +204,24 @@ public class TeacherActivity extends AppCompatActivity
 
         } else if (navitem_id == R.id.item_navigation_drawer_share) {
             // launch new intent instead of loading fragment
+            try{
+                ArrayList<Uri> uris = new ArrayList<Uri>();
+                Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                sendIntent.setType("application/*");
+                uris.add(Uri.fromFile(new File(getApplicationInfo().publicSourceDir)));
+                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+                startActivity(Intent.createChooser(sendIntent, null));
+
+            }catch(Exception e){}
 
 
         } else if (navitem_id == R.id.item_navigation_drawer_contactus) {
             // launch new intent instead of loading fragment
-
+            CustomerSupportsFragment fragment = new CustomerSupportsFragment();
+            FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
 
         }   else if (navitem_id == R.id.item_navigation_drawer_logout) {
             logout();

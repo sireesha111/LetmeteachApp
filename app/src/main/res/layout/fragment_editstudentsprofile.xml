@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter your name"
-                    android:inputType="textNoSuggestions|text"
+                    android:inputType="textNoSuggestions|textCapWords"
                     android:textSize="15dp" />
 
             </android.support.design.widget.TextInputLayout>

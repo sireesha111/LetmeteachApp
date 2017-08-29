@@ -21,7 +21,7 @@
                 android:id="@+id/heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Filter your Search Tutor: "
+                android:text="Filter your Search Teacher: "
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:textColor="@color/primaryText"
@@ -81,35 +81,6 @@
             <TextView
                 android:visibility="gone"
                 android:id="@+id/txt_class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/sp_quali"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/sp_round"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/arrow4"
-                    android:contentDescription="@string/app_name" />
-            </FrameLayout>
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/txt_quali"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp" />
