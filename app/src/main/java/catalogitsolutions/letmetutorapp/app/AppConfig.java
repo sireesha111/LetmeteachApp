@@ -1,15 +1,4 @@
 
-/*Developed By: Catalog IT Solutions. Copyright © 2017. Catalog. All Rights Reserved.This product is protected by copyright
- laws. Unauthorized reproduction or distribution of this product,or any portion of it,may result in severe civil and
- criminal penalties, and will be prosecuted to the maximum extent possible under the law.
- File Name: AppConfig.java
- Created By: Sireesha A
- Created On: 02/Jan/2017
- Last Modified By: Sireesha A
- Last Modified On: 10/Feb/2017
- Purpose: To get webservices
-  */
-
 package catalogitsolutions.letmetutorapp.app;
 
 public class AppConfig {
@@ -50,6 +39,6 @@ public class AppConfig {
     public static final String SHARED_STUDENTS_PREF_NAME = "stuloginapp";
     public static final String STUDENTSUSER_SHARED_PREF = "admin_stu";
 
-    public static final String EMAIL = "admin@catalogsolutions.in";
-    public static final String PASSWORD = "citsadmin123";
+    public static final String EMAIL = "sireesha.achugatla@gmail.com";
+    public static final String PASSWORD = "sireesha";
 }
