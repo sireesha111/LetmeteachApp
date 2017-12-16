@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\xml\\nav_states.xml",
+        "source": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.github.rey5137\\material\\1.2.2\\res\\xml\\nav_states.xml"
+    },
+    {
         "merged": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\xml\\nav_states.xml",
         "source": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.github.rey5137\\material\\1.2.2\\res\\xml\\nav_states.xml"
     }

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
@@ -121,7 +122,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
 
                     if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confpassword.isEmpty()) {
 
-                        if(!username.matches(UsernamePattern) && !(username.length() < 3 && username.length() > 10)){
+                        if(!username.matches(UsernamePattern) || !(username.length() < 3) || !(username.length() > 10)){
                             if(isValidEmaillId(email.trim())){
                                 if (!(password.length() < 5)) {
                                     if (password.equals(confpassword)) {
@@ -182,7 +183,9 @@ public class StudentRegisterActivity extends AppCompatActivity {
 
                     if (success == 1) {
 
-                        Toast.makeText(getApplicationContext(), "Student Successfully Created.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "You have registered and the activation mail is sent to your email. Click the activation link to activate you account.", Toast.LENGTH_SHORT).show();
+
+                        getEmailActivate(email);
                         Intent intent = new Intent(getApplicationContext(), StudentLoginActivity.class);
                         //intent.putExtra("teach", "Students");
                         Context  ctx   = getApplicationContext();
@@ -230,6 +233,46 @@ public class StudentRegisterActivity extends AppCompatActivity {
         };
 
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+    private void getEmailActivate(String stremail) {
+
+        String url_student = AppConfig.STUDENTEMAIL_URL +"?email="+stremail;
+
+        Log.d(TAG, url_student);
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url_student, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    int success = response.getInt("success");
+
+                    if (success == 1) {
+
+                        Toast.makeText(getApplicationContext(), "You have registered and the activation mail is sent to your email. Click the activation link to activate you account.", Toast.LENGTH_SHORT).show();
+
+                    } else if (success == 0) {
+
+                        Toast.makeText(StudentRegisterActivity.this, "Wrong Email id", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } catch (JSONException jsn_exception) {
+                    jsn_exception.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+
+
     }
 
     private boolean isValidEmaillId(String email){

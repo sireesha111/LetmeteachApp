@@ -1,5 +1,6 @@
 package varnalabs.letmetutorapp.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,8 +8,10 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -21,8 +24,10 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,6 +39,8 @@ import varnalabs.letmetutorapp.R;
 import varnalabs.letmetutorapp.app.AppConfig;
 import varnalabs.letmetutorapp.app.AppController;
 import me.drakeet.materialdialog.MaterialDialog;
+import varnalabs.letmetutorapp.fragment.TeacherEditProfileFragment;
+import varnalabs.letmetutorapp.model.Search;
 
 public class TeacherRegisterActivity extends AppCompatActivity {
 
@@ -50,6 +57,11 @@ public class TeacherRegisterActivity extends AppCompatActivity {
     String UsernamePattern = "^[a-z0-9_-]{3,10}$";
 
     TextView txtuser,txtemail, txtpwd, txtcpwd;
+
+    Handler handler;
+
+    // this is our progressDialog
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +91,10 @@ public class TeacherRegisterActivity extends AppCompatActivity {
         TextView idLogo = (TextView) toolbar.findViewById(R.id.idLogo);
         idLogo.setText("Register as Teacher");
         idLogo.setTypeface(font);
+
+        // create the Handler object on thread-A will enable you to get
+        // a reference of thread-A from thread-B
+        handler = new Handler();
 
         // checking internet connection
         if (!haveNetworkConnection()) {
@@ -187,6 +203,10 @@ public class TeacherRegisterActivity extends AppCompatActivity {
 
     private void register(final String username, final String email, final String password) {
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("loading...");
+        progressDialog.show();
+
         String tag_string_req = "register_teacher";
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -199,26 +219,32 @@ public class TeacherRegisterActivity extends AppCompatActivity {
                 try {
                     JSONObject jObj = new JSONObject(response);
                     int success = jObj.getInt("success");
-                    String message = jObj.getString("message");
+                    final String message = jObj.getString("message");
 
-                    if (success == 1) {
+                     if (success == 1) {
 
-                        Toast.makeText(getApplicationContext(), "Teacher Successfully Created.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), TeacherLoginActivity.class);
-                        //intent.putExtra("teach", "Teacher");
-                        Context  ctx   = getApplicationContext();
-                        SharedPreferences sharedPreferences = ctx.getSharedPreferences("selectpref", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                         Toast.makeText(getApplicationContext(), "You have registered and the activation mail is sent to your email. Click the activation link to activate you account.", Toast.LENGTH_SHORT).show();
 
-                        editor.putString("teach", "Teacher");
-                        editor.commit();
-                        startActivity(intent);
+                         getEmailActivate(email);
+                         Intent intent = new Intent(getApplicationContext(), TeacherLoginActivity.class);
+                         Context  ctx   = getApplicationContext();
+                         SharedPreferences sharedPreferences = ctx.getSharedPreferences("selectpref", Context.MODE_PRIVATE);
+                         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                         editor.putString("teach", "Teacher");
+                         editor.commit();
+                         startActivity(intent);
 
+                         ed_username.setText("");
+                         ed_email.setText("");
+                         ed_password.setText("");
+                         ed_confpassword.setText("");
+                        progressDialog.dismiss();
                     } else {
                         Snackbar snackbar = Snackbar
                                 .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
                         snackbar.show();
+                        progressDialog.dismiss();
                         //Toast.makeText(getApplicationContext(), "Invoice is not created", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -232,6 +258,7 @@ public class TeacherRegisterActivity extends AppCompatActivity {
                 Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
             }
         }) {
 
@@ -251,6 +278,46 @@ public class TeacherRegisterActivity extends AppCompatActivity {
         };
 
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+    private void getEmailActivate(String stremail) {
+
+        String url_teacher = AppConfig.TEACHEREMAIL_URL +"?email="+stremail;
+
+        Log.d(TAG, url_teacher);
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url_teacher, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    int success = response.getInt("success");
+
+                    if (success == 1) {
+
+                        Toast.makeText(getApplicationContext(), "You have registered and the activation mail is sent to your email. Click the activation link to activate you account.", Toast.LENGTH_SHORT).show();
+
+                    } else if (success == 0) {
+
+                        Toast.makeText(TeacherRegisterActivity.this, "Wrong Email id", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } catch (JSONException jsn_exception) {
+                    jsn_exception.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+
+
     }
 
     private boolean isValidEmaillId(String email){

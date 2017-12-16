@@ -8,11 +8,27 @@
         "source": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
+        "merged": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
         "merged": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
         "source": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_action.xml"
     },
     {
         "merged": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
         "source": "D:\\DayByDayProjects\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "D:\\Sireesha\\Sample\\LetmeteachApp\\multiSelectSpinnerlibrary\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.0.0-alpha1\\res\\layout-v21\\notification_template_custom_big.xml"
     }
 ]

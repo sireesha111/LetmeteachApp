@@ -4,8 +4,8 @@ package varnalabs.letmetutorapp.app;
 public class AppConfig {
 
     //Base url
-    public static String BASE_URL = "http://http://192.168.0.106/sample_android_api/";
-    public static String IMAGES = "http://http://192.168.0.106/sample_android_api/";
+    public static String BASE_URL = "http://192.168.0.106/sample_android_api/";
+    public static String IMAGES = "http://192.168.0.106/sample_android_api/";
 
     public static final String STUDENT_LOGIN_URL = BASE_URL + "student_login.php";
     public static final String TEACHER_LOGIN_URL = BASE_URL + "teacher_login.php";
@@ -27,6 +27,8 @@ public class AppConfig {
     public static final String CHECKSTUDENTSDETAIL_URL = BASE_URL + "checkstudentdetails.php";
     public static final String SEARCHTEACHER_URL = BASE_URL + "searchteacher_list.php";
     public static final String SEARCHSTUDENT_URL = BASE_URL + "searchstudent_list.php";
+    public static final String TEACHEREMAIL_URL = BASE_URL + "teacher_sendemail.php";
+    public static final String STUDENTEMAIL_URL = BASE_URL + "student_sendemail.php";
 
     public static final String TEACHERDETAILS_URL = BASE_URL + "getTeacherDetails.php";
     public static final String STUDENTDETAILS_URL = BASE_URL + "getStudentDetails.php";
