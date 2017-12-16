@@ -46,8 +46,6 @@ public class SearchStudentActivity extends AppCompatActivity {
     ProgressDialog PD;
     private static final String TAG = SearchStudentActivity.class.getSimpleName();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
