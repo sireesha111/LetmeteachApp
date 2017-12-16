@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		
 		$st_codeno = "LMTS".date("ymdHis");
 	
-		$sql = "INSERT INTO `students`(`st_code`, `st_username`, `st_activateemail`, `st_password`, `st_status`) VALUES ('$st_codeno', '$username', '$email', '$password', '1')";
+		$sql = "INSERT INTO `students`(`st_code`, `st_username`, `st_activateemail`, `st_password`, `st_status`) VALUES ('$st_codeno', '$username', '$email', '$password', '0')";
 		
 		if(mysqli_query($con,$sql)){
 			

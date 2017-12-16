@@ -23,13 +23,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		
 		$st_codeno = "LMTT".date("ymdHis");;
 	
-		$sql = "INSERT INTO `tutors`(`t_code`, `t_username`, `t_activateemail`, `t_password`, `t_status`) VALUES ('$st_codeno', '$username', '$email', '$password', '1')";
+		$sql = "INSERT INTO `tutors`(`t_code`, `t_username`, `t_activateemail`, `t_password`, `t_status`) VALUES ('$st_codeno', '$username', '$email', '$password', '0')";
 		
 		if(mysqli_query($con,$sql)){
 			
 			$response["success"] = 1;
-			$response["message"] = "Successfully Registered";
-
+			$response["message"] = "Teacher create successfully";
+			
 			echo json_encode($response);
 			
 		}else{
